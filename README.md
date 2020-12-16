@@ -2,6 +2,11 @@
 
 Discord bot that generates a random number between 1 and 20
 
+## Requirements
+
+- Node 12.0+
+- `npm`
+
 ## Setup
 
 Create a new application in the
@@ -15,6 +20,12 @@ same directory as the project with the following contents:
 
 ```
 DISCORD_BOT_TOKEN=<VALUE_FROM_DEVELOPER_PORTAL>
+```
+
+Install dependencies
+
+```
+npm i
 ```
 
 Run the bot locally
