@@ -14,9 +14,9 @@ const roll = ({d}) => {
 
 const fateMap = [
   null, // unused - rolls range from indicies 1-3
-  '➕',
   '➖',
   '⬛',
+  '➕',
 ];
 
 client.on('ready', () => {
@@ -31,8 +31,11 @@ client.on('message', msg => {
   }
   if (msg.content === '!4dF') {
     const values = Array.from({ length: 4 }, () => roll({ d: 3 }));
+    const sum = values.reduce((acc, val) =>
+      // subtract 2 from all values to get range from -1 to +1
+      acc + val - 2, 0);
     const rolls = values.map((v) => fateMap[v]);
-    msg.reply(`${rolls}`);
+    msg.reply(`${rolls}: ${sum}`);
   }
 });
 
