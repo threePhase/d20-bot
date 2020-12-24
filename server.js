@@ -12,6 +12,13 @@ const roll = ({d}) => {
   return crypto.randomBytes(1).readUInt8(0) % d + 1;
 }
 
+const fateMap = [
+  null, // unused - rolls range from indicies 1-3
+  '➕',
+  '➖',
+  '⬛',
+];
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
   console.log('d20-bot ready');
@@ -21,6 +28,11 @@ client.on('message', msg => {
   if (msg.content === '!d20') {
     const value = roll({ d: 20 });
     msg.reply(`${value}`);
+  }
+  if (msg.content === '!4dF') {
+    const values = Array.from({ length: 4 }, () => roll({ d: 3 }));
+    const rolls = values.map((v) => fateMap[v]);
+    msg.reply(`${rolls}`);
   }
 });
 
