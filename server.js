@@ -11,12 +11,35 @@ const roll = ({d}) => {
   // return a random number between 1 and d inclusive
   return crypto.randomBytes(1).readUInt8(0) % d + 1;
 }
+const d20Map = [
+  null, // unused - rolls range from indicies 1-20
+  ':d201:',
+  ':d202:',
+  ':d203:',
+  ':d204:',
+  ':d205:',
+  ':d206:',
+  ':d207:',
+  ':d208:',
+  ':d209:',
+  ':d2010:',
+  ':d2011:',
+  ':d2012:',
+  ':d2013:',
+  ':d2014:',
+  ':d2015:',
+  ':d2016:',
+  ':d2017:',
+  ':d2018:',
+  ':d2019:',
+  ':d2020:',
+];
 
 const fateMap = [
   null, // unused - rolls range from indicies 1-3
-  '➖',
-  '⬛',
-  '➕',
+  ':dfneg:',
+  ':df:',
+  ':dfplus:',
 ];
 
 client.on('ready', () => {
@@ -26,8 +49,8 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === '!d20') {
-    const value = roll({ d: 20 });
-    msg.reply(`${value}`);
+    const idx = roll({ d: 20 });
+    msg.reply(d20Map[idx]);
   }
   if (msg.content === '!4dF') {
     const values = Array.from({ length: 4 }, () => roll({ d: 3 }));
