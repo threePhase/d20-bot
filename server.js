@@ -9,7 +9,7 @@ const { DISCORD_BOT_TOKEN } = process.env;
 
 const roll = ({d}) => {
   // return a random number between 1 and d inclusive
-  return crypto.randomBytes(1).readUInt8(0) % d + 1;
+  return crypto.randomInt(1, d + 1);
 }
 const d20Map = [
   null, // unused - rolls range from indicies 1-20
