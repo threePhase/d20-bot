@@ -60,7 +60,7 @@ client.on('message', msg => {
       acc + val - 2, 0);
     const rolls = values.map((v) =>
       client.emojis.cache.find((emoji) => emoji.name === fateMap[v]));
-    msg.reply(`${rolls}: ${sum}`);
+    msg.reply(`${rolls.join('')}: ${sum}`);
   }
 });
 
